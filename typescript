@@ -1,0 +1,2313 @@
+Script started on 2025-06-11 00:37:25+00:00 [TERM="linux" TTY="/dev/pts/0" COLUMNS="149" LINES="39"]
+[?2004hazureuser@ansible1:~/confluent-packages$ ansible-playbook -i hosts.yml confluent.platform.all
+[?2004l[1;35m[WARNING]: Could not match supplied host pattern, ignoring: zookeeper[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: control_center_next_gen[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_rest[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_connect_replicator[0m
+
+PLAY [Host Prerequisites] ***************************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Create Certificate Authority and Copy to Ansible Host] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Confirm Hash Merging Enabled] *************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Verify Ansible version] *******************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Check the presence of Controller and Zookeeper] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Gather OS Facts] **************************************************************************************************
+[1;35m[WARNING]: Platform linux on host 10.0.0.5 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another[0m
+[1;35mPython interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-[0m
+[1;35mcore/2.18/reference_appendices/interpreter_discovery.html for more information.[0m
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Verify Python version] ********************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Red Hat Repo Setup and Java Installation] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Ubuntu Repo Setup and Java Installation] **************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/common/tasks/ubuntu.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.common : Install apt-transport-https] **************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install gnupg for gpg-keys] ***************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Confluent Apt Key] ********************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=https://packages.confluent.io/deb/7.9/archive.key) [0m
+[0;36mskipping: [10.0.0.5] => (item=https://packages.confluent.io/confluent-control-center-next-gen/deb/archive.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Ensure Custom Apt Repo does not Exists when repository_configuration is Confluent] ********************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Confluent Apt Repo] *******************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=deb https://packages.confluent.io/deb/7.9 stable main) [0m
+[0;36mskipping: [10.0.0.5] => (item=deb https://packages.confluent.io/confluent-control-center-next-gen/deb stable main) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Confluent Clients Apt Key] ************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Confluent Clients Apt Repo] ***********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Ensure Confluent Apt Repo does not Exists when repository_configuration is Custom] ********************************
+[0;36mskipping: [10.0.0.5] => (item=deb https://packages.confluent.io/deb/7.9 stable main) [0m
+[0;36mskipping: [10.0.0.5] => (item=deb https://packages.confluent.io/confluent-control-center-next-gen/deb stable main) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Ensure Confluent Clients Apt Repo does not Exists when repository_configuration is Custom] ************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Custom Apt Repo] **********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : meta] *************************************************************************************************************
+
+TASK [confluent.platform.common : Make Sure man pages Directory Exists] *****************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Custom Java Install] **********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/common/tasks/custom_java_install.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.common : Check custom_java_path in Centos7] ********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check custom_java_path in Debian] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Java Update Alternatives] *****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Keytool Update Alternatives] **************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add open JDK repo] ************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install Java] *****************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install OpenSSL] **************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Java Version] *************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Print Java Version] ***********************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "msg": "Current Java Version is: openjdk version \"17.0.15\" 2025-04-15"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Install pip] ******************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Upgrade pip] ******************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install pip packages] *********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install pip packages using apt] ***********************************************************************************
+[0;32mok: [10.0.0.5] => (item=cryptography)[0m
+
+TASK [confluent.platform.common : Debian Repo Setup and Java Installation] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Config Validations] ***********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/common/tasks/config_validations.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.common : Retrieve SSL public key hash from private key on Local Host] ******************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register content of key file] *************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Retrieve SSL public key Hash from private key on Remote Host] *****************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Retrieve SSL public key hash from X509 certificate on Local Host] *************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register content of cert file] ************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Retrieve SSL public key hash from X509 certificate on Remote Host] ************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : get public key hash from private key] *****************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : get public key hash from X509 cert] *******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Assert SSL public key hash from private key matches public key hash from Cert] ************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check the OS when using FIPS mode] ********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check if FIPS is enabled on Local Host] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check if FIPS is enabled on Remote Host] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=oauth_token_uri) [0m
+[0;36mskipping: [10.0.0.5] => (item=oauth_issuer_url) [0m
+[0;36mskipping: [10.0.0.5] => (item=oauth_jwks_uri) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=none) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=none) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : assert] ***********************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Assert mTLS is enabled only if SSL is enabled for Prometheus] *****************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Assert mTLS is enabled only if SSL is enabled for Alertmanager] ***************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Validate Alertmanager TLS/mTLS Configuration] *********************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Validate Prometheus TLS/mTLS/Basic Auth Configuration] ************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Validate Alertmanager TLS/mTLS/Basic Auth Configuration] **********************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.common : Create Confluent Platform install directory] **********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Expand remote Confluent Platform archive] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Set Group and Owner for Confluent Platform archive] ***************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Create Jolokia directory] *****************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Copy Jolokia Jar] *************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Download Jolokia Jar] *********************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Create Prometheus install directory] ******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Copy Prometheus Jar] **********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Download Prometheus JMX Exporter Jar] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Install Confluent CLI] ********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/common/tasks/confluent_cli.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.common : Confluent CLI system check] ***************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Confluent CLI architecture check] *********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Directory name for the Confluent CLI version] *********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Confluent CLI create base path] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Expand remote Confluent CLI archive] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Set Group and Owner for Confluent CLI archive] ********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Download Confluent CLI - Custom URL] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Delete any existing symlink for confluent cli] ********************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Confluent CLI create symlink in /usr/local/bin/confluent] *********************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [Zookeeper Status Finding] *********************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: zookeeper_parallel[0m
+
+PLAY [Zookeeper Parallel Provisioning] **************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: zookeeper_serial[0m
+
+PLAY [Zookeeper Serial Ordering] ********************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: zookeeper_follower[0m
+
+PLAY [Zookeeper Followers Provisioning] *************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: zookeeper_leader[0m
+
+PLAY [Zookeeper Leader Provisioning] ****************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Kafka Controller Status Finding] **************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Populate service facts] ***********************************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Determine Installation Pattern - Parallel or Serial] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Group Hosts by Installation Pattern] **********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [Kafka Controller Parallel Provisioning] *******************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Gather OS Facts] ****************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_distribution)[0m
+
+TASK [confluent.platform.kafka_controller : Validate cert principals defined in inventory for RBAC mTLS setup] **************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Assert that datadir is not present in the inventory] ****************************************************
+[0;32mok: [10.0.0.5] => (item=10.0.0.5) => {[0m
+[0;32m    "ansible_loop_var": "item",[0m
+[0;32m    "changed": false,[0m
+[0;32m    "item": "10.0.0.5",[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.kafka_controller : Assert log.dirs Property not Misconfigured] *************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Install the Kafka Controller Packages] ******************************************************************
+[0;36mskipping: [10.0.0.5] => (item=confluent-common) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-ce-kafka-http-server) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-server-rest) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-telemetry) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-server) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-rebalancer) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-security) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Install the Kafka Controller Packages] ******************************************************************
+[0;36mskipping: [10.0.0.5] => (item=confluent-common) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-ce-kafka-http-server) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-server-rest) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-telemetry) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-server) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-rebalancer) [0m
+[0;36mskipping: [10.0.0.5] => (item=confluent-security) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Kafka Controller group] *********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Check if Kafka Controller User Exists] ******************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller user] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Copy Kafka broker's Service to Create kafka Controller's service] ***************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : include_tasks] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Kafka Files] **********************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Set Permissions on /var/lib/controller] *****************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller Config directory] ***************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller Config] *************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller Client Config] ******************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Include Kraft Cluster Data] *****************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_controller/tasks/get_meta_properties.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_controller : Check if Data Directories are Formatted] ****************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Get ClusterId] ******************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Extract ClusterId from meta.properties on ZK Broker] ****************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Format Data Directory and Add Scram Credentials] ********************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Logs Directory] **********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Set Permissions on Data Dirs] ***************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Check Green/Brownfield setup] ***************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Set Permissions on Data Dir files] **********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Update Kafka log4j Config for Log Cleanup] ****************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace rootLogger] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace DailyRollingFileAppender with RollingFileAppender] ********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Remove Key log4j.appender.X.DatePattern] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register Appenders] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Max Size Properties] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'MaxFileSize=100MB'])[0m
+
+TASK [confluent.platform.kafka_controller : Set Permissions on Log4j Conf] **************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create logredactor rule file directory] *****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Copy logredactor rule file from control node to component node] *****************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'kafkaAppender'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Restart kafka Controller] *******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller Jolokia Config] *****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Kafka Controller Jaas Config] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Deploy JMX Exporter Config File] ************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create Service Override Directory] **********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Write Service Overrides] ********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Create sysctl directory on Debian distributions] ********************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Tune virtual memory settings] ***************************************************************************
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.swappiness', 'value': 1})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.dirty_background_ratio', 'value': 5})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.dirty_ratio', 'value': 80})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.max_map_count', 'value': 262144})[0m
+
+TASK [confluent.platform.kafka_controller : Certs were Updated - Trigger Restart] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : meta] ***************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.kafka_controller : restart Kafka Controller] ********************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_controller/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.kafka_controller : Restart Kafka] *******************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.kafka_controller : Startup Delay] *******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Encrypt secrets] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : meta] ***************************************************************************************************
+
+TASK [confluent.platform.kafka_controller : Kafka Started] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Wait for Controller health checks to complete] **********************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_controller/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_controller : Check Kafka Metadata Quorum using bootstrap controller] *************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Set Hostnames and Ports] ********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Set Server/Controller Host and Port values] *************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Check Kafka Metadata Quorum] ****************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Register LogEndOffset] **********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_controller : Check LogEndOffset values] ******************************************************************************
+[1;35m[WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ item|int > 0 and[0m
+[1;35mleo.stdout_lines[1:]|max|int - item|int < 1000 }}[0m
+[0;32mok: [10.0.0.5] => (item=156565) => {[0m
+[0;32m    "ansible_loop_var": "item",[0m
+[0;32m    "changed": false,[0m
+[0;32m    "item": "156565",[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.kafka_controller : Delete temporary keys/certs when keystore and trustore is provided] *************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_controller.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_controller.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_controller_serial[0m
+
+PLAY [Kafka Controller Serial Provisioning] *********************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Kafka Broker Status Finding] ******************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Populate service facts] ***********************************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Determine Installation Pattern - Parallel or Serial] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Group Hosts by Installation Pattern] **********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [Kafka Broker Parallel Provisioning] ***********************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Gather OS Facts] ********************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_distribution)[0m
+
+TASK [confluent.platform.kafka_broker : Validate cert principals defined in inventory for RBAC mTLS setup] ******************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Assert that datadir is not present in the inventory] ********************************************************
+[0;32mok: [10.0.0.5] => (item=10.0.0.5) => {[0m
+[0;32m    "ansible_loop_var": "item",[0m
+[0;32m    "changed": false,[0m
+[0;32m    "item": "10.0.0.5",[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [confluent.platform.kafka_broker : Assert log.dirs Property not Misconfigured] *****************************************************************
+[0;32mok: [10.0.0.5] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Install the Kafka Broker Packages] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Install the Kafka Broker Packages] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Kafka Broker group] *****************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Check if Kafka Broker User Exists] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker user] ***********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Copy Kafka Broker Service from archive file to system] ******************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : include_tasks] **********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to MDS Truststore for C3 SSO] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Kafka Files] **********************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Set Permissions on /var/lib/kafka] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Config directory] ***********************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Config] *********************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Client Config] **************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Include Kraft Cluster Data] *********************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_broker/tasks/get_meta_properties.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_broker : Extract ClusterId from meta.properties on KRaft Controller] *************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Format Storage Directory] ***********************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Zookeeper TLS Client Config] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Logs Directory] **************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Set Permissions on Data Dirs] *******************************************************************************
+[0;32mok: [10.0.0.5] => (item=/var/lib/kafka/data)[0m
+
+TASK [confluent.platform.kafka_broker : Check Green/Brownfield setup] *******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Set Permissions on Data Dir files] **************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/lib/kafka/data) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Update Kafka log4j Config for Log Cleanup] ****************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace rootLogger] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace DailyRollingFileAppender with RollingFileAppender] ********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Remove Key log4j.appender.X.DatePattern] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register Appenders] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Max Size Properties] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafkaAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['stateChangeAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['requestAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['cleanerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['controllerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['authorizerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['metadataServiceAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['auditLogAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['dataBalancerAppender', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['zkAuditAppender', 'MaxFileSize=100MB'])[0m
+
+TASK [confluent.platform.kafka_broker : Set Permissions on Log4j Conf] ******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create logredactor rule file directory] *********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Copy logredactor rule file from control node to component node] *********************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'kafkaAppender'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Restart kafka broker] ***************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Jolokia Config] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Jaas Config] ****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Kafka Broker Password File] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Zookeeper chroot] ************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM Users with Zookeeper] **************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM 256 Users with Zookeeper] **********************************************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Deploy JMX Exporter Config File] ****************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create Service Override Directory] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Write Service Overrides] ************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create sysctl directory on Debian distributions] ************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Tune virtual memory settings] *******************************************************************************
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.swappiness', 'value': 1})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.dirty_background_ratio', 'value': 5})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.dirty_ratio', 'value': 80})[0m
+[0;32mok: [10.0.0.5] => (item={'key': 'vm.max_map_count', 'value': 262144})[0m
+
+TASK [confluent.platform.kafka_broker : Certs were Updated - Trigger Restart] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : meta] *******************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.kafka_broker : restart kafka] ***********************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_broker/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.kafka_broker : Restart Kafka] ***********************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.kafka_broker : Startup Delay] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Encrypt secrets] ********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Encrypt Controller secrets] *******************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : meta] *******************************************************************************************************
+
+TASK [confluent.platform.kafka_broker : Kafka Started] **********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Wait for Broker health checks to complete] ******************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_broker/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_broker : Get Topics with UnderReplicatedPartitions] ******************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Get Topics with UnderReplicatedPartitions with Secrets Protection enabled] **********************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : set_fact] ***************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from Identity Provider] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS using mtls certs] ****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Wait for Metadata Service to start] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Wait for Embedded Rest Proxy to start] **********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Wait for Embedded Rest Proxy to start] **********************************************************************
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for Embedded Rest Proxy to start (30 retries left).[0m
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Fetch Files for Debugging Failure] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Fail Provisioning] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM Users with KRaft] ******************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM 256 Users with KRaft] **************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM Users with KRaft with Secrets Protection enabled] **********************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create SCRAM 256 Users with KRaft with Secrets Protection enabled] ******************************************
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5] => (item=None) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Register Cluster] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Create RBAC Rolebindings] ***********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_broker : Delete temporary keys/certs when keystore and trustore is provided] *****************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_broker.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_broker.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_broker_serial[0m
+
+PLAY [Kafka Broker Serial Provisioning] *************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Kafka Broker Serial Ordering] *****************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_broker_non_controller[0m
+
+PLAY [Kafka Broker Non Controllers Provisioning] ****************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_broker_controller[0m
+
+PLAY [Kafka Broker Controller Provisioning] *********************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Schema Registry Provisioning] *****************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Gather OS Facts] *****************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Install the Schema Registry Packages] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Install the Schema Registry Packages] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Schema Registry Group] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Check if Schema Registry User Exists] ********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Schema Registry User] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Copy Schema Registry Service from archive file to system] ************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Schema Registry Files] ************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Configure RBAC for OAuth User] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Configure RBAC for LDAP User] ****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Distinguished Name from Keystore - SSL Mutual Auth] *******************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Principal] ************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Configure RBAC for mTLS User] ****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Schema Registry Config directory] *****************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Schema Registry Config] ***************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [Create Schema Registry Config with Secrets Protection] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Logs Directory] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Update log4j Config for Log Cleanup] **********************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace rootLogger] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace DailyRollingFileAppender with RollingFileAppender] ********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Remove Key log4j.appender.X.DatePattern] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register Appenders] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Max Size Properties] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=['file', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['file', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['file', 'MaxFileSize=100MB'])[0m
+
+TASK [confluent.platform.schema_registry : Set Permissions on Log4j Conf] ***************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create logredactor rule file directory] ******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Copy logredactor rule file from control node to component node] ******************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'file'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Restart schema registry] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Schema Registry Jolokia Config] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Deploy JMX Exporter Config File] *************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Basic Auth Jaas File] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Basic Auth Password File] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Create Service Override Directory] ***********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Write Service Overrides] *********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Certs were Updated - Trigger Restart] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : meta] ****************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.schema_registry : restart schema-registry] **********************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/schema_registry/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.schema_registry : Restart Schema Registry] **********************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.schema_registry : Startup Delay] ********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Start Schema Registry Service] ***************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Health Check] ********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/schema_registry/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from Identity Provider] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS using mtls certs] ****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Wait for API to return 200] ******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Wait for API to return 200] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : set_fact] ************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Wait for API to return 200 - mTLS] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Wait for API to return 200 - mTLS] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Fetch Files for Debugging Failure] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Fail Provisioning] ***************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Register Cluster] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.schema_registry : Delete temporary keys/certs when keystore and trustore is provided] **************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/schema_registry.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/schema_registry.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Proceed Prompt] *******************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+PLAY [Kafka Connect Status Finding] *****************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Populate service facts] ***********************************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Determine Installation Pattern - Parallel or Serial] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Group Hosts by Installation Pattern] **********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [Kafka Connect Parallel Provisioning] **********************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Gather OS Facts] *******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Install the Kafka Connect Packages] ************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Install the Kafka Connect Packages] ************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Kafka Connect Group] ********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Check if Kafka Connect User Exists] ************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Kafka Connect User] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Copy Kafka Connect Service from archive file to system] ****************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Copy Kafka Connect Service from default install to system] *************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Kafka Connect Files] *********************************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Create Dirs for Copied Files] *************************************************************************************
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-azure-blob-storage-1.6.28.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-azure-blob-storage-1.6.28.zip'})[0m
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-azure-blob-storage-source-2.6.13.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-azure-blob-storage-source-2.6.13.zip'})[0m
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-jdbc-10.8.4.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-jdbc-10.8.4.zip'})[0m
+
+TASK [confluent.platform.common : Copy Files] *******************************************************************************************************
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-azure-blob-storage-1.6.28.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-azure-blob-storage-1.6.28.zip'})[0m
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-azure-blob-storage-source-2.6.13.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-azure-blob-storage-source-2.6.13.zip'})[0m
+[0;32mok: [10.0.0.5] => (item={'source_path': '/home/azureuser/confluent-packages/connectors/confluentinc-kafka-connect-jdbc-10.8.4.zip', 'destination_path': '/opt/connectors/confluentinc-kafka-connect-jdbc-10.8.4.zip'})[0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Distinguished Name from Keystore - SSL Mutual Auth] *******************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Principal] ************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Configure RBAC for mTLS User] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Configure RBAC for OAuth User] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Configure RBAC for Ldap User] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Kafka Connect Config directory] *********************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Kafka Connect Config] *******************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [Create Kafka Connect Config with Secrets Protection] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Install Connect Plugins] ***********************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_connect/tasks/connect_plugins.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_connect : Ensure Plugin Dirs] ****************************************************************************************
+[0;32mok: [10.0.0.5] => (item=/opt/confluent/confluent-7.9.1/share/java/connect_plugins)[0m
+[0;32mok: [10.0.0.5] => (item=/usr/share/java/connect_plugins)[0m
+
+TASK [confluent.platform.kafka_connect : set_fact] **************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Kafka Connect Local Plugins from Controller to Host] *************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Installing Local Plugins] **********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create tmp directory for downloading remote plugins] *******************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Download Remote Plugins] ***********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Installing Remote Plugins] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Set Permissions on all Plugin Files] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Confluent Hub] *********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Logs Directory] *************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [Update Connect log4j Config for Log Cleanup] **************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace rootLogger] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace DailyRollingFileAppender with RollingFileAppender] ********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Remove Key log4j.appender.X.DatePattern] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register Appenders] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Max Size Properties] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=['connectAppender', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['connectAppender', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['connectAppender', 'MaxFileSize=100MB'])[0m
+
+TASK [confluent.platform.kafka_connect : Set Permissions on Log4j Conf] *****************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create logredactor rule file directory] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Copy logredactor rule file from control node to component node] ********************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'connectAppender'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Restart kafka connect] *************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Kafka Connect Jolokia Config] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Deploy JMX Exporter Config File] ***************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Basic Auth Jaas File] *******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Basic Auth Password File] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Create Service Override Directory] *************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Write Service Overrides] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Certs were Updated - Trigger Restart] **********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : meta] ******************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.kafka_connect : restart connect distributed] ********************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_connect/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.kafka_connect : Restart Kafka Connect] **************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.kafka_connect : Startup Delay] **********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Start Connect Service] *************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Health Check] **********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_connect/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from Identity Provider] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS using mtls certs] ****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Wait for API to return 200] ********************************************************************************
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for API to return 200 (40 retries left).[0m
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for API to return 200 (39 retries left).[0m
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Wait for API to return 200] ********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : set_fact] **************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Wait for API to return 200 - mTLS] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Wait for API to return 200 - mTLS] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Fetch Files for Debugging Failure] *************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Fail Provisioning] *****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Set parent Cluster] ****************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Register Cluster] ******************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_connect/tasks/register_cluster.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_connect : Decide Where to delegate task of getting superuser token] **************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token for Super User] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Kafka Cluster ID from Embedded Rest Proxy] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Parse Kafka Cluster ID from json query] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Kafka Cluster ID from Zookeeper] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Set kafka_cluster_id Variable] ************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Create SSL Certificate Directory] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check if MDS public pem file exists on Ansible Controller] ********************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Debug] ************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Copy in MDS Public Pem File] **************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Fetch Kafka Connect Cluster Groups] ************************************************************************
+[0;32mok: [10.0.0.5] => (item=10.0.0.5)[0m
+
+TASK [confluent.platform.kafka_connect : Register Kafka Connect Cluster] ****************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Deploy Connectors] *****************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/kafka_connect/tasks/deploy_connectors.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.kafka_connect : Register Kafka Connect Subgroups] **************************************************************************
+[0;32mok: [10.0.0.5] => (item=10.0.0.5)[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Distinguished Name from Keystore - SSL Mutual Auth] *******************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Principal] ************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Add Role Bindings for Connect mTLS User] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Add Role Bindings for Connect OAuth] ***********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Add Role Bindings for Connect Ldap] ************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : set_fact] **************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from Identity Provider] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS using mtls certs] ****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Register connector configs and remove deleted connectors for single cluster] *******************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Register connector configs and remove deleted connectors for Multiple Clusters] ****************************
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller_parallel) [0m
+[0;36mskipping: [10.0.0.5] => (item=control_center) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker_parallel) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_controller) [0m
+[0;36mskipping: [10.0.0.5] => (item=ksql) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_broker) [0m
+[0;36mskipping: [10.0.0.5] => (item=schema_registry) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect) [0m
+[0;36mskipping: [10.0.0.5] => (item=kafka_connect_parallel) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.kafka_connect : Delete temporary keys/certs when keystore and trustore is provided] ****************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_connect.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/kafka_connect.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_connect_serial[0m
+
+PLAY [Kafka Connect Serial Provisioning] ************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [KSQL Status Finding] **************************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Populate service facts] ***********************************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Determine Installation Pattern - Parallel or Serial] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Group Hosts by Installation Pattern] **********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [KSQL Parallel Provisioning] *******************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Gather OS Facts] ****************************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Install the Ksql Packages] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Install the Ksql Packages] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql Group] **************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Check if Ksql User Exists] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql User] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Set Ksql streams dir permissions] ***********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Copy Ksql Service from archive file to system] **********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Import Public Confluent Cloud Certificates Authority Certs into Truststore] *****************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom KSQL Files] ***********************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Distinguished Name from Keystore - SSL Mutual Auth] *******************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Principal] ************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Configure RBAC on KSQL for mTLS User] *******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Configure RBAC for OAuth User] **************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Configure RBAC for LDAP User] ***************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql Config directory] ***************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql Config] *************************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [Create Ksql Config with Secrets Protection] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Logs Directory] **********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create log4j Directory] *********************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql log4j Config] *******************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create logredactor rule file directory] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Copy logredactor rule file from control node to component node] *****************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'main'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Restart ksql] *******************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Ksql Jolokia Config] *****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create RocksDB Directory] *******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Set Permission to RocksDB Files] ************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Deploy JMX Exporter Config File] ************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Basic Auth Jaas File] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Basic Auth Password File] ************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Create Service Override Directory] **********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Write Service Overrides] ********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Certs were Updated - Trigger Restart] *******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : meta] ***************************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.ksql : restart ksql] ********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/ksql/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.ksql : Restart KSQL] ********************************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.ksql : Startup Delay] *******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Start Ksql Service] *************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Health Check] *******************************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/ksql/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from Identity Provider] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token from MDS using mtls certs] ****************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token] ******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Wait for API to return 200] *****************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Wait for API to return 200] *****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : set_fact] ***********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Wait for API to return 200 - mTLS] **********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Wait for API to return 200 - mTLS] **********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Fetch Files for Debugging Failure] **********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Fail Provisioning] **************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Set parent Cluster] *************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Register Cluster] ***************************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/ksql/tasks/register_cluster.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.ksql : Decide Where to delegate task of getting superuser token] ***********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Authorization Token for Super User] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Kafka Cluster ID from Embedded Rest Proxy] ********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Parse Kafka Cluster ID from json query] ***************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Get Kafka Cluster ID from Zookeeper] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : set_fact] *********************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Set kafka_cluster_id Variable] ************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Create SSL Certificate Directory] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Check if MDS public pem file exists on Ansible Controller] ********************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Debug] ************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Copy in MDS Public Pem File] **************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Fetch KSQL Cluster Groups] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=10.0.0.5)[0m
+
+TASK [confluent.platform.ksql : set_fact] ***********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Register KSQL Cluster] **********************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5] => (item=10.0.0.5) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.ksql : Delete temporary keys/certs when keystore and trustore is provided] *************************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ksql.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ksql.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: ksql_serial[0m
+
+PLAY [KSQL Serial Provisioning] *********************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Kafka Rest Status Finding] ********************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_rest_parallel[0m
+
+PLAY [Kafka Rest Parallel Provisioning] *************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_rest_serial[0m
+
+PLAY [Kafka Rest Serial Provisioning] ***************************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Control Center Next Gen Status Finding] *******************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: control_center_next_gen_parallel[0m
+
+PLAY [Control Center Next Gen Parallel Provisioning] ************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: control_center_next_gen_serial[0m
+
+PLAY [Control Center Next Gen Serial Provisioning] **************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Control Center Status Finding] ****************************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Populate service facts] ***********************************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Determine Installation Pattern - Parallel or Serial] ******************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Group Hosts by Installation Pattern] **********************************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+PLAY [Control Center Parallel Provisioning] *********************************************************************************************************
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [include_role : common] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Gather OS Facts] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=ansible_os_family)[0m
+[0;32mok: [10.0.0.5] => (item=ansible_fqdn)[0m
+
+TASK [Stop Service and Remove Packages on Version Change] *******************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Install the Control Center Packages] **********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Install the Control Center Packages] **********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Control Center Group] ******************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Check if Control Center User Exists] **********************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Control Center User] *******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Set Control Center Data Dir permissions] ******************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Set Control Center Data Dir file permissions] *************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Copy Control Center Service from archive file to system] **************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [include_role : ssl] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure Kerberos] ***************************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Control Center Files] *************************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Copy Custom Files From All Components List] ***************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Configure RBAC for OAuth User] ****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Configure RBAC for LDAP User] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Distinguished Name from Keystore - SSL Mutual Auth] *******************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Extract Principal] ************************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Configure RBAC for mTLS User] *****************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Import IDP certificate to Truststore for OAuth] ***********************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Control Center Config directory] *******************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Control Center Config] *****************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [Create Control Center Config with Secrets Protection] *****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Logs Directory] ************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [Update log4j Config for Log Cleanup] **********************************************************************************************************
+[0;36mincluded: common for 10.0.0.5[0m
+
+TASK [confluent.platform.variables : Define the old ssl_mutual_auth_enabled variable] ***************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.variables : Define the new ssl_client_authentication variable] *************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace rootLogger] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Replace DailyRollingFileAppender with RollingFileAppender] ********************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Remove Key log4j.appender.X.DatePattern] **************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Register Appenders] ***********************************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.common : Add Max Size Properties] ******************************************************************************************
+[0;32mok: [10.0.0.5] => (item=['main', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['main', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['main', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['streams', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['streams', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['streams', 'MaxFileSize=100MB'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafka', 'Append=true'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafka', 'MaxBackupIndex=10'])[0m
+[0;32mok: [10.0.0.5] => (item=['kafka', 'MaxFileSize=100MB'])[0m
+
+TASK [confluent.platform.control_center : Set Permissions on Log4j Conf] ****************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create logredactor rule file directory] *******************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Copy logredactor rule file from control node to component node] *******************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [Configure logredactor] ************************************************************************************************************************
+[0;36mskipping: [10.0.0.5] => (item={'logger_name': 'log4j.rootLogger', 'appenderRefs': 'main'}) [0m
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Restart control center] ***********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create RocksDB Directory] *********************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Set Permission to RocksDB Files] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Basic Auth Jaas File] ******************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Basic Auth Password File] **************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Create Service Override Directory] ************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Write Service Overrides] **********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Certs were Updated - Trigger Restart] *********************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : meta] *****************************************************************************************************
+
+RUNNING HANDLER [confluent.platform.control_center : restart control center] ************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/control_center/tasks/restart_and_wait.yml for 10.0.0.5[0m
+
+RUNNING HANDLER [confluent.platform.control_center : Restart Control Center] ************************************************************************
+[0;33mchanged: [10.0.0.5][0m
+
+RUNNING HANDLER [confluent.platform.control_center : Startup Delay] *********************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Start Control Center Service] *****************************************************************************
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Health Check] *********************************************************************************************
+[0;36mincluded: /home/azureuser/.ansible/collections/ansible_collections/confluent/platform/roles/control_center/tasks/health_check.yml for 10.0.0.5[0m
+
+TASK [confluent.platform.control_center : Wait for webpage to serve content] ************************************************************************
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for webpage to serve content (40 retries left).[0m
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for webpage to serve content (39 retries left).[0m
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for webpage to serve content (38 retries left).[0m
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for webpage to serve content (37 retries left).[0m
+[1;30mFAILED - RETRYING: [10.0.0.5]: Wait for webpage to serve content (36 retries left).[0m
+[0;32mok: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Fetch Files for Debugging Failure] ************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Fail Provisioning] ****************************************************************************************
+[0;36mskipping: [10.0.0.5][0m
+
+TASK [confluent.platform.control_center : Delete temporary keys/certs when keystore and trustore is provided] ***************************************
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/ca.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/control_center.crt) [0m
+[0;36mskipping: [10.0.0.5] => (item=/var/ssl/private/control_center.key) [0m
+[0;36mskipping: [10.0.0.5][0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: control_center_serial[0m
+
+PLAY [Control Center Serial Provisioning] ***********************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Kafka Connect Replicator Status Finding] ******************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_connect_replicator_parallel[0m
+
+PLAY [Kafka Connect Replicator Parallel Provisioning] ***********************************************************************************************
+[0;36mskipping: no hosts matched[0m
+[1;35m[WARNING]: Could not match supplied host pattern, ignoring: kafka_connect_replicator_serial[0m
+
+PLAY [Kafka Connect Replicator Serial Provisioning] *************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY RECAP ******************************************************************************************************************************************
+[0;33m10.0.0.5[0m                   : [0;32mok=242 [0m [0;33mchanged=36  [0m unreachable=0    failed=0    [0;36mskipped=369 [0m rescued=0    ignored=0   
+
+[?2004hazureuser@ansible1:~/confluent-packages$ exit
+[?2004lexit
+
+Script done on 2025-06-11 00:55:52+00:00 [COMMAND_EXIT_CODE="0"]
